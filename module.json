@@ -1,0 +1,17 @@
+{
+    "description": "Driver for the Atlas Scientific DO sensor",
+    "class_name": "AtlasDo",
+    "header_file": "openag_atlas_do.h",
+    "arguments": [
+        {
+            "name": "i2c_address",
+            "type": "int",
+            "default": 97
+        }
+    ],
+    "outputs": {
+        "water_dissolved_oxygen": {
+            "type": "std_msgs/Float32"
+        }
+    }
+}
