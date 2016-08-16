@@ -1,6 +1,6 @@
 /**
  *  \file openag_atlas_do.cpp
- *  \brief Eldotrical conductivity sensor.
+ *  \brief Dissolved oxygen sensor.
  */
 #include "openag_atlas_do.h"
 
@@ -36,6 +36,18 @@ bool AtlasDo::get_water_dissolved_oxygen(std_msgs::Float32 &msg) {
   bool res = _send_water_dissolved_oxygen;
   _send_water_dissolved_oxygen = false;
   return res;
+}
+
+void AtlasDo::set_atmospheric_calibration(std_msgs::Empty msg) {
+  Wire.beginTransmission(_i2c_address);
+  Wire.print("Cal");
+  Wire.endTransmission();
+}
+
+void AtlasDo::set_zero_calibration(std_msgs::Empty msg) {
+  Wire.beginTransmission(_i2c_address);
+  Wire.print("Cal,0");
+  Wire.endTransmission();
 }
 
 void AtlasDo::send_query() {

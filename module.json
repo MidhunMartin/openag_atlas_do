@@ -9,6 +9,16 @@
             "default": 97
         }
     ],
+    "inputs": {
+        "atmospheric_calibration": {
+            "type": "std_msgs/Empty",
+            "categories": ["calibration"]
+        },
+        "zero_calibration": {
+            "type": "std_msgs/Empty",
+            "categories": ["calibration"]
+        }
+    },
     "outputs": {
         "water_dissolved_oxygen": {
             "type": "std_msgs/Float32"

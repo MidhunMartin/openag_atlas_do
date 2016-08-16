@@ -2,13 +2,14 @@
  *  \file openag_atlas_do.h
  *  \brief Dissolved oxygen sensor.
  */
-#ifndef OPENAG_ATLAS_do_H
-#define OPENAG_ATLAS_do_H
+#ifndef OPENAG_ATLAS_DO_H
+#define OPENAG_ATLAS_DO_H
 
 #include "Arduino.h"
 #include "openag_module.h"
 #include <Wire.h>
 #include <std_msgs/Float32.h>
+#include <std_msgs/Empty.h>
 
 /**
  * \brief Eldotrical conductivity sensor.
@@ -22,6 +23,8 @@ class AtlasDo : public Module {
     void begin();
     void update();
     bool get_water_dissolved_oxygen(std_msgs::Float32 &msg);
+    void set_atmospheric_calibration(std_msgs::Empty msg);
+    void set_zero_calibration(std_msgs::Empty msg);
 
   private:
     // Private variables
