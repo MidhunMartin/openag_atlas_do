@@ -73,6 +73,8 @@ void AtlasDo::read_response() {
     _waiting_for_response = false;
   }
   else if (response == 1) {
+    status_level = OK;
+    status_msg = "";
     _water_dissolved_oxygen = string.toFloat();
     _send_water_dissolved_oxygen = true;
     _waiting_for_response = false;
