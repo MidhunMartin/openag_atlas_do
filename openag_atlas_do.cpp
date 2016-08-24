@@ -19,7 +19,9 @@ void AtlasDo::begin() {
 
 void AtlasDo::update() {
   if (_waiting_for_response) {
-    read_response();
+    if (millis() - _time_of_last_query > 1800) {
+      read_response();
+    }
   }
   else if (millis() - _time_of_last_query > _min_update_interval) {
     send_query();
@@ -46,11 +48,11 @@ void AtlasDo::set_zero_calibration(std_msgs::Empty msg) {
 }
 
 void AtlasDo::send_query() {
+  _time_of_last_query = millis();
   Wire.beginTransmission(_i2c_address); // read message response state
   Wire.print("r");
   Wire.endTransmission();
   _waiting_for_response = true;
-  _time_of_last_query = millis();
 }
 
 void AtlasDo::read_response() {
